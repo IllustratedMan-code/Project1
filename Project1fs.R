@@ -8,6 +8,8 @@ top_num <- 10
   
 header <- scan(file, nlines = 1, sep="\t", what = character())
 data <- read.table(file, skip = 2, header = FALSE, sep = "\t", quote = "", check.names=FALSE)
+
+header[1] <- "gene_id"
 names(data) <- header
 
 header2 <- scan(file, skip = 1, nlines = 1, sep="\t", what = character())
