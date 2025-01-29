@@ -9,12 +9,14 @@ nfold=5
   
 header <- scan(file, nlines = 1, sep="\t", what = character())
 data <- read.table(file, skip = 2, header = FALSE, sep = "\t", quote = "", check.names=FALSE)
+
+header[1] <- "gene_id"
 names(data) <- header
 
 header2 <- scan(file, skip = 1, nlines = 1, sep="\t", what = character())
 
-LumA <- data[data$sample_id %in% first10,header2=='Luminal A']
-Basal <- data[data$sample_id %in% first10,header2=='Basal-like']
+LumA <- data[data$gene_id %in% first10,header2=='Luminal A']
+Basal <- data[data$gene_id %in% first10,header2=='Basal-like']
 
 
 # define function cross_valid so we can rerun the cross validataion with various parameters
