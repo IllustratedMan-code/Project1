@@ -30,6 +30,8 @@ set.seed(0)
 
 header <- scan(file, nlines = 1, sep="\t", what = character())
 data <- read.table(file, skip = 2, header = FALSE, sep = "\t", quote = "", check.names=FALSE)
+
+header[1] <- "gene_id"
 names(data) <- header
 
 header2 <- scan(file, skip = 1, nlines = 1, sep="\t", what = character())
@@ -92,7 +94,6 @@ cross_validation <- function (nfold, alg="centroid") {
 system.time({
 
   # FIXME: the data file has ER "Positive" / "Negative" instead of cancer type
-  # FIXME: gene id field is labeled data$id instead of data$sample_id
   
 LumA <- data[,header2=='Luminal A']
 Basal <- data[,header2=='Basal-like']
