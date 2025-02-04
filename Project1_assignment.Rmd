@@ -18,6 +18,6 @@ For the assignment use Project1.Rmd file which has a number “FIXME:” labels 
 
 For extra points use lasso regression on the large dataset instead of logistic regression.
 
-The assignment is due on -- February 18, 2024 midnight.
+The assignment is due on -- February 18, 2025 midnight.
 
 The submission should be zip compressed file named "project1-[*your UC username*].zip" (e.g. "project1-lastnfi.zip") which includes project1.Rmd, project1.docx and any supporting R files. The zip file should be uploaded Canvas The assignment entry in Canvas will be created shortly.
