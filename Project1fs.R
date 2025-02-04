@@ -24,8 +24,8 @@ data_sd_names<-cbind(data.frame(data_sd),data[,1])
 # create an "include" list of all those genes where sd > threashold
 include_list <- data_sd_names[data_sd_names[,1]>sd_threashold,2]
 
-Positive <- data[data$id %in% include_list,header2=='Positive']
-Negative <- data[data$id %in% include_list,header2=='Negative']
+Positive <- data[data$gene_id %in% include_list,header2=='Positive']
+Negative <- data[data$gene_id %in% include_list,header2=='Negative']
 
 # define function cross_valid so we can rerun the cross validataion with various parameters
 cross_validation <- function (nfold, alg="centroid") {
