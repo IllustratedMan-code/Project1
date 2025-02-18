@@ -7,7 +7,7 @@ output:
 
 This assignment builds upon the R/RStudio class and expands the n-fold cross-validation example.
 
-1.	for the assignment use the second dataset called TCGA_breast_cancer_ERpositive_vs_ERnegative_PAM50.tsv that shows ER assignment for each sample (Positive vs. Negative).
+1.	for the assignment use the second dataset called TCGA_breast_cancer_ERpositive_vs_ERnegative_PAM50.tsv that shows ER assignment for each sample (Positive vs. Negative)
 2.	compute 5-fold and 10-fold cross-validation estimates of prediction accuracies of ER using all genes by utilizing logistic regression and compare with NNC (2x2 table).
 3.	modify the the R markdown document template to report your computation and results in a table format.
 4.	comment on the quality of results
