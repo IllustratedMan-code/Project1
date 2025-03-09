@@ -29,6 +29,7 @@ data_sd <- sapply(seq(nrow(data)), function(x) {
 data_sd_names <- cbind(data.frame(data_sd), data[, 1])
 
 # create an "include" list of all those genes where sd > threashold
+# this removes
 include_list <- data_sd_names[data_sd_names[, 1] > sd_threashold, 2]
 
 Positive <- data[data$gene_id %in% include_list, header2 == "Positive"]
@@ -78,14 +79,33 @@ cross_validation <- function(nfold, alg = "centroid", top_num = 50) {
       sqrt(sum((x - centroidA)^2)) - sqrt(sum((x - centroidB)^2)) < 0
     }))
 
+    if (alg == "GLM") {
+      trainingAB <- rbind(
+        cbind(data.frame(t(trainingA)), cancer = 0),
+        cbind(data.frame(t(trainingB)), cancer = 1)
+      )
+      testA0 <- data.frame(t(testA))
+      testB0 <- data.frame(t(testB))
+      model <- glm(cancer ~ ., trainingAB, family = "binomial")
+      p <- predict(model, newdata = testA0, type = "response")
+      misclassifiedA <<- sum(ifelse(p < 0.5, 0, 1))
+      p <- predict(model, newdata = testB0, type = "response")
+      misclassifiedB <<- sum(ifelse(p >= 0.5, 0, 1))
+    }
+
     result[test_group] <- (misclassifiedA + misclassifiedB) / (ncol(testA) + ncol(testB))
   }
-
-  paste0(round(mean(result), 4), " sd=(", round(sd(result), 4), ")")
+  paste0("mean=(", round(mean(result), 4), ") ", " sd=(", round(sd(result), 4), ")")
 }
 
-print("top 50 genes")
-kable(cross_validation(5, top_num = 50))
+kable(data.frame(
+  "Top 50 genes (centroid)" = cross_validation(5, top_num = 50),
+  "Top 100 genes (centroid)" = cross_validation(5, top_num = 100)
+))
 
-print("top 100 genes")
-kable(cross_validation(5, top_num = 100))
+
+print("extra credit")
+kable(data.frame(
+  "Top 50 genes (GLM)" = cross_validation(5, top_num = 50, alg = "GLM"),
+  "Top 100 genes (GLM)" = cross_validation(5, top_num = 100, alg = "GLM")
+))

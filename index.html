@@ -381,13 +381,13 @@ the assignment and report on any difficulties.</li>
 <p>Please add R code that reads data here - reading file:
 TCGA_breast_cancer_ERpositive_vs_ERnegative_PAM50.tsv</p>
 <pre><code>##    user  system elapsed 
-##    0.11    0.01    0.12</code></pre>
+##   0.042   0.000   0.046</code></pre>
 </div>
 <div id="computation" class="section level2">
 <h2>Computation</h2>
 <p>Please add R code that computes the results</p>
 <pre><code>##    user  system elapsed 
-##   1.184   0.100   1.284</code></pre>
+##   0.301   0.064   0.398</code></pre>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the
 code chunk to prevent printing of the R code.</p>
 </div>
@@ -421,34 +421,42 @@ code chunk to prevent printing of the R code.</p>
 </div>
 <div id="discussion" class="section level2">
 <h2>Discussion</h2>
-<p>This is what I found out</p>
+<p>For five-fold and 10-fold validation, the GLM model has slightly
+worse performance according to the mean when compared to the kNNC
+method. However, the sd goes up when the number of folds increases in
+kNNC while it decreases in the GLM model. It could be argued that the
+performance of the two models is too similar to argue for the use of one
+or the other.</p>
 </div>
 <div id="part-2" class="section level1">
 <h1>Part 2</h1>
 <p>Change eval=TRUE when ready to include Project1fs.R</p>
-<pre><code>## [1] &quot;top 50 genes&quot;</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">x</th>
+<th align="left">Top.50.genes..centroid.</th>
+<th align="left">Top.100.genes..centroid.</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">0.0618 sd=(0.038)</td>
+<td align="left">mean=(0.0618) sd=(0.038)</td>
+<td align="left">mean=(0.0622) sd=(0.0496)</td>
 </tr>
 </tbody>
 </table>
-<pre><code>## [1] &quot;top 100 genes&quot;</code></pre>
+<pre><code>## [1] &quot;extra credit&quot;</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="left">x</th>
+<th align="left">Top.50.genes..GLM.</th>
+<th align="left">Top.100.genes..GLM.</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">0.0622 sd=(0.0496)</td>
+<td align="left">mean=(0.0589) sd=(0.0298)</td>
+<td align="left">mean=(0.0619) sd=(0.0242)</td>
 </tr>
 </tbody>
 </table>

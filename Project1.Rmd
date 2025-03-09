@@ -28,8 +28,6 @@ first10 <- c("NAT1", "BIRC5", "BAG1", "BCL2", "BLVRA", "CCNB1", "CCNE1", "CDC6",
 Please add R code that reads data here - 
 reading file: `r file`
 
-```{r}
-```
 
 ```{r reading_data, echo=FALSE}
 system.time({
@@ -145,7 +143,9 @@ kable(x)
 
 ## Discussion
 
-This is what I found out
+For five-fold and 10-fold validation, the GLM model has slightly worse performance according to the mean when compared to the kNNC method. 
+However, the sd goes up when the number of folds increases in kNNC while it decreases in the GLM model. It could be argued that the performance of the 
+two models is too similar to argue for the use of one or the other.
 
 # Part 2
 
